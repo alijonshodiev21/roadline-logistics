@@ -1,33 +1,28 @@
 import { useState } from 'react'
-import { ArrowRight, Menu, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, Menu, X } from 'lucide-react'
 
 const links = [
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Owner-operators', href: '/owner-operators' },
-  { label: 'Partnerships', href: '/partnerships' },
-  { label: 'FAQ', href: '/faq' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
+  { label: 'Owner-operators', href: '#owner-operators' },
 ]
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+
   const closeMenu = () => setMenuOpen(false)
 
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="/" aria-label="Roadline Logistics Inc. home" onClick={closeMenu}>
+        <a className="brand" href="#top" aria-label="Roadline Logistics Inc. home" onClick={closeMenu}>
           <img
             className="brand-logo"
-            src="/images/roadline-logo.png"
+            src="/DBB179C9-A0ED-43B2-9040-1D2D74DF0F75(3).png"
             alt="Roadline Logistics Inc."
-            onError={(event) => {
-              event.currentTarget.hidden = true
-              event.currentTarget.nextElementSibling?.classList.remove('brand-fallback-hidden')
-            }}
           />
-          <span className="brand-fallback brand-fallback-hidden" aria-hidden="true">ROADLINE <span>LOGISTICS INC.</span></span>
         </a>
+
         <button
           className="mobile-menu-toggle"
           type="button"
@@ -38,14 +33,16 @@ export default function Header() {
         >
           {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
+
         <nav id="primary-navigation" className={`primary-navigation${menuOpen ? ' is-open' : ''}`} aria-label="Primary navigation">
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
           ))}
-          <a className="nav-contact" href="/contact" onClick={closeMenu}>Get in touch <ArrowRight size={15} aria-hidden="true" /></a>
+          <a className="nav-contact" href="#contact" onClick={closeMenu}>Get in touch <ArrowRight size={15} aria-hidden="true" /></a>
         </nav>
       </div>
       <div className="header-rule" />
+      <a class="scroll-cue" href="#services" aria-label="Scroll to our services"><ArrowDown size={15} /></a>
     </header>
   )
 }
