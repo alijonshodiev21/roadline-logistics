@@ -42,7 +42,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header-rule" />
-      <a class="scroll-cue" href="#services" aria-label="Scroll to our services"><ArrowDown size={15} /></a>
+      <a className="scroll-cue" href="#services" aria-label="Scroll to our services"><ArrowDown size={15} /></a>
     </header>
   )
 }
